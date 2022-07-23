@@ -1,6 +1,9 @@
-# Proyecto 02 Programación II - Monster-Flag-Eater Game
 
-### Crear un juego gráde interfaz de línea de comandos que implemente el uso de herencia y polimorfismo
+/**
+ * \mainpage
+ * # Proyecto 02 Programación II - Monster-Flag-Eater Game
+
+### Crear un juego gráfico que implemente el uso de herencia y polimorfismo
 
 El usuario inicializa el juego y se le muestra si quiere jugar. Una vez que el usuario dice si, se le muestra el primer nivel. El objetivo de cada nivel es que el personaje llegue a la bandera. El nivel va a tener obstáculos como paredes, cajas que se empujan, cajas que se jalan y suelo resbalozo. El usuario tiene que ingeniarselas para llegar a la bandera. 
 Una vez que llega a la bandera se le muestra un nuevo nivel con distinto acomodamiento de  los objetos.
@@ -28,14 +31,14 @@ El nivel se puede resetear con la tecla 'R'.
 ## Caso normal de uso
 Curso normal:	
 1. El sistema carga los elementos del nivel: MainCharacter, PushBox, IceFloor, Wall, Flag, EmptyLot.
-1. El jugador presiona las teclas de flecha para mover el personaje una posicion.
-1. El systema mueve al personaje de acuerdo con la direccion de la flecha.
-1. Si el personaje choca con una pared, no se mueve.
-1. Si el personaje choca contra una caja, la empuja y el adquiere la posicion de la caja.
-1. Si el personaje se mueve en piso resbaloso, continua su movimiento hasta encontrar una casilla vacia o una pared.
-1. Si el personaje come la bandera, gana el nivel.
-1. Si el usuario presiona la tecla 'R', el nivel se resetea.
-1. Si 'M' le presentemos el menu para dejar de jugar.
+2. El jugador presiona las teclas de flecha para mover el personaje una posicion.
+3. El systema mueve al personaje de acuerdo con la direccion de la flecha.
+4. Si el personaje choca con una pared, no se mueve.
+5. Si el personaje choca contra una caja, la empuja y el adquiere la posicion de la caja.
+6. Si el personaje se mueve en piso resbaloso, continua su movimiento hasta encontrar una casilla vacia o una pared.
+7. Si el personaje come la bandera, gana el nivel.
+8. Si el usuario presiona la tecla 'R', el nivel se resetea.
+9. Si 'M' le presentemos el menu para dejar de jugar.
 
 
 ## Equipo de desarrollo
@@ -52,12 +55,28 @@ respectivamente. Procede a poner los siguientes caracteres y se al leerlo se cre
 
 ## Symbologia letra para interfaz en línea de comandos:
 1. M = Maincharacter
-1. S = puShbox
-1. . = Emptyslot
-1. F = Flag
-1. W = Wall
-1. '*' = IceFloor
+2. S = puShbox
+3. . = Emptyslot
+4. F = Flag
+5. W = Wall
+6. '*' = IceFloor
 
 ## Licencia
 
 CC BY Proyecto 02 Programación II - Monster Flag Eater Game
+
+ */ 
+
+#ifndef COMMON_H
+#define COMMON_H
+
+#define DECLARE_RULE5(Class, action) \
+    Class(const Class& other) = action; \
+    Class(Class&& other) = action; \
+    Class& operator=(const Class& other) = action; \
+    Class& operator=(Class&& other) = action
+
+#define DISABLE_COPY(Class) \
+    DECLARE_RULE5(Class, delete)
+
+#endif // COMMON_H
